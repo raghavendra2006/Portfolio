@@ -194,11 +194,11 @@ body.light a { color: var(--light-accent); }
   overflow: hidden;
   border: 1px solid var(--glass-border);
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  filter: grayscale(100%) brightness(0.9);
+  filter: brightness(1.1);
 }
 
 .profile-img-container:hover {
-  filter: grayscale(0%) brightness(1.1);
+  filter: brightness(1.2);
   border-color: var(--dark-accent);
   box-shadow: 0 0 30px rgba(59, 130, 246, 0.4);
 }
