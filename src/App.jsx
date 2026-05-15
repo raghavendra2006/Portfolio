@@ -28,7 +28,6 @@ export default function App() {
         }
       }
     };
-    };
     document.addEventListener("click", handleClick);
 
     // Spotlight mouse tracking
