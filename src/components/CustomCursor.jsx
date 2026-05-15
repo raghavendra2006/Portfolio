@@ -31,10 +31,13 @@ export default function CustomCursor() {
           width: "32px",
           height: "32px",
           borderRadius: "50%",
-          border: "2px solid rgba(139, 92, 246, 0.5)",
+          border: "2px dashed var(--dark-accent)",
+          opacity: 0.4,
           pointerEvents: "none",
           zIndex: 9999,
         }}
+        animate={{ rotate: 360 }}
+        transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
       />
       <motion.div
         style={{
@@ -47,6 +50,7 @@ export default function CustomCursor() {
           height: "8px",
           borderRadius: "50%",
           backgroundColor: "var(--dark-accent-hover)",
+          boxShadow: "0 0 10px var(--dark-accent-hover)",
           pointerEvents: "none",
           zIndex: 9999,
         }}

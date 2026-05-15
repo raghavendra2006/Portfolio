@@ -85,11 +85,23 @@ export default function Skills() {
             <h3 style={{ color: 'var(--dark-text-primary)', fontSize: '1.2rem' }}>{cat.title}</h3>
             <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '10px' }}>
               {cat.skills.map((skill, i) => (
-                <li key={i} style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.85rem', color: 'var(--dark-text-secondary)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <span style={{ color: 'var(--dark-accent)' }}>▹</span> {skill.name}
+                <li key={i} style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.85rem', color: 'var(--dark-text-secondary)', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                      <span style={{ color: 'var(--dark-accent)' }}>▹</span> {skill.name}
+                    </div>
+                    <span style={{ fontSize: '0.7rem', color: 'var(--dark-accent)', opacity: 0.6 }}>[{skill.level}]</span>
                   </div>
-                  <span style={{ fontSize: '0.7rem', color: 'var(--dark-accent)', opacity: 0.6 }}>[{skill.level}]</span>
+                  {/* Skill Power Meter */}
+                  <div style={{ width: '100%', height: '2px', backgroundColor: 'rgba(59, 130, 246, 0.1)', borderRadius: '2px', overflow: 'hidden' }}>
+                    <motion.div 
+                      initial={{ width: 0 }}
+                      whileInView={{ width: `${(parseInt(skill.level.slice(1)) / 5) * 100}%` }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 1, delay: 0.5 }}
+                      style={{ height: '100%', backgroundColor: 'var(--dark-accent)', boxShadow: '0 0 10px var(--dark-accent)' }}
+                    />
+                  </div>
                 </li>
               ))}
             </ul>

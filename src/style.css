@@ -28,6 +28,7 @@
   --dark-shadow: rgba(0, 0, 0, 0.8);
   --glass-bg: rgba(15, 23, 42, 0.4);
   --glass-border: rgba(59, 130, 246, 0.2);
+  --neon-pulse: rgba(59, 130, 246, 0.5);
   
   /* Transitions */
   --transition-fast: 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
@@ -73,6 +74,11 @@ body::after {
   z-index: -1;
   transform: translateY(var(--scroll-y, 0));
   transition: transform 0.1s linear;
+}
+
+@keyframes neon-breath {
+  0%, 100% { opacity: 0.3; filter: blur(2px); }
+  50% { opacity: 0.8; filter: blur(4px); }
 }
 
 /* Custom Scrollbar */
@@ -177,9 +183,20 @@ body.light a { color: var(--light-accent); }
 }
 
 .glass:hover {
-  border-color: rgba(59, 130, 246, 0.4);
+  border-color: var(--dark-accent);
   background: rgba(15, 23, 42, 0.6);
-  box-shadow: 0 12px 40px 0 rgba(59, 130, 246, 0.15);
+  box-shadow: 0 0 30px 0 rgba(59, 130, 246, 0.2);
+}
+
+.glass:hover::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid var(--dark-accent);
+  border-radius: inherit;
+  animation: neon-breath 2s infinite ease-in-out;
+  pointer-events: none;
+  z-index: 2;
 }
 
 /* Ambient Blobs */
