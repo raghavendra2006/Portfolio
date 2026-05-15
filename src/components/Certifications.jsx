@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { FaAws, FaGoogle, FaCertificate, FaExternalLinkAlt } from "react-icons/fa";
 
 const certs = [
-  { name: "AWS Developer Associate", icon: <FaAws />, link: "#" },
+  { name: "AWS Developer Associate", icon: <FaAws />, link: "https://drive.google.com/file/d/1wsZBHxZy_Vry1O9odeNXuOchrWr11Hf8/view" },
   { name: "AWS Cloud Developing", icon: <FaAws />, link: "#" },
   { name: "Google Cloud Career Launchpad", icon: <FaGoogle />, link: "#" },
   { name: "GFG Cloud Practitioner", icon: <FaCertificate />, link: "#" }
