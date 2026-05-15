@@ -31,9 +31,10 @@ export default function Navbar() {
       top: 0, width: '100%', zIndex: 1000,
       transition: 'all 0.3s ease',
       height: scrolled ? '70px' : '100px',
-      backgroundColor: dark ? (scrolled ? 'rgba(10, 25, 47, 0.85)' : 'transparent') : (scrolled ? 'rgba(248, 250, 252, 0.85)' : 'transparent'),
-      backdropFilter: scrolled ? 'blur(10px)' : 'none',
-      boxShadow: scrolled ? '0 10px 30px -10px rgba(2,12,27,0.7)' : 'none'
+      backgroundColor: dark ? (scrolled ? 'rgba(5, 11, 20, 0.85)' : 'transparent') : (scrolled ? 'rgba(248, 250, 252, 0.85)' : 'transparent'),
+      backdropFilter: scrolled ? 'blur(12px)' : 'none',
+      borderBottom: scrolled ? (dark ? '1px solid rgba(0, 240, 255, 0.1)' : '1px solid rgba(0,0,0,0.05)') : 'none',
+      boxShadow: scrolled ? '0 10px 30px -10px rgba(0,0,0,0.5)' : 'none'
     }}>
       <nav style={{
         display: 'flex', justifyContent: 'space-between', alignItems: 'center',

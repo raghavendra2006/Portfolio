@@ -49,10 +49,11 @@ export default function Experience() {
           >
             <div style={{ 
               position: 'absolute', left: '-6px', top: 0, width: '10px', height: '10px',
-              borderRadius: '50%', backgroundColor: 'var(--dark-accent)'
+              borderRadius: '50%', backgroundColor: 'var(--dark-accent)',
+              boxShadow: '0 0 10px var(--dark-accent)'
             }} />
             <h3 style={{ fontSize: '1.3rem', color: 'var(--dark-text-primary)' }}>
-              {job.role} <span style={{ color: 'var(--dark-accent)' }}>@ {job.company}</span>
+              {job.role} <span className="text-gradient">@ {job.company}</span>
             </h3>
             <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.85rem', marginBottom: '15px' }}>
               {job.period}

@@ -1,26 +1,27 @@
 import { motion } from "framer-motion";
-import { FaAws, FaJava, FaReact, FaDocker, FaDatabase, FaTools } from "react-icons/fa";
+import { FaAws, FaDocker, FaJava, FaTools, FaCloud, FaShieldAlt, FaServer, FaChartLine } from "react-icons/fa";
+import TiltCard from "./TiltCard";
 
 const skillCategories = [
   {
-    title: "Backend",
-    icon: <FaJava size={30} />,
-    skills: ["Java 17", "Spring Boot 3", "REST APIs", "JWT Auth", "Maven"]
+    title: "Cloud Infrastructure",
+    icon: <FaCloud size={30} />,
+    skills: ["AWS (EC2, S3, EKS, IAM)", "GCP / Azure", "Terraform", "CloudFormation", "Serverless"]
   },
   {
-    title: "Cloud & DevOps",
-    icon: <FaAws size={30} />,
-    skills: ["AWS (EC2, S3, IAM)", "Docker", "Jenkins", "GitHub Actions", "Terraform"]
+    title: "DevOps & CI/CD",
+    icon: <FaDocker size={30} />,
+    skills: ["Docker & Kubernetes", "Jenkins pipelines", "GitHub Actions", "Ansible", "ArgoCD"]
   },
   {
-    title: "Databases",
-    icon: <FaDatabase size={30} />,
-    skills: ["MySQL 8", "JPA/Hibernate", "PostgreSQL", "MongoDB", "Redis"]
+    title: "Backend & Architecture",
+    icon: <FaServer size={30} />,
+    skills: ["Java & Spring Boot", "Python / Go", "Microservices", "RESTful APIs", "gRPC / GraphQL"]
   },
   {
-    title: "Frontend & Tools",
-    icon: <FaReact size={30} />,
-    skills: ["React & Vite", "HTML/CSS/JS", "Framer Motion", "SonarQube", "Git/Bash"]
+    title: "Monitoring & Security",
+    icon: <FaShieldAlt size={30} />,
+    skills: ["Prometheus & Grafana", "ELK Stack", "Datadog", "SonarQube", "IAM & RBAC"]
   }
 ];
 
@@ -40,7 +41,7 @@ export default function Skills() {
         display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '30px', marginTop: '40px'
       }}>
         {skillCategories.map((cat, index) => (
-          <motion.div
+          <TiltCard
             key={index}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -58,7 +59,7 @@ export default function Skills() {
                 </li>
               ))}
             </ul>
-          </motion.div>
+          </TiltCard>
         ))}
       </div>
     </section>

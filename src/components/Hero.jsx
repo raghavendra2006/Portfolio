@@ -22,15 +22,16 @@ export default function Hero() {
       </motion.div>
 
       <motion.h1
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.9 }}
+        initial={{ opacity: 0, y: 30, rotateX: 20 }}
+        animate={{ opacity: 1, y: 0, rotateX: 0 }}
+        transition={{ duration: 0.8, delay: 0.9, type: 'spring' }}
+        className="text-gradient"
         style={{ 
           fontSize: 'clamp(40px, 8vw, 80px)', 
           fontWeight: 800, 
-          color: 'var(--dark-text-primary)',
           lineHeight: 1.1,
-          margin: 0
+          margin: 0,
+          paddingBottom: '10px'
         }}
       >
         Patchipulusu Leela<br/>Krishna Raghavendra.
@@ -51,11 +52,14 @@ export default function Hero() {
       >
         <TypeAnimation
           sequence={[
-            "Software Engineer.", 2000,
-            "Backend Developer.", 2000,
-            "Cloud Enthusiast.", 2000,
+            "Cloud & DevOps Architect.", 2000,
+            "Infrastructure Automation.", 2000,
+            "Kubernetes Specialist.", 2000,
           ]}
           repeat={Infinity}
+          wrapper="span"
+          cursor={true}
+          style={{ display: 'inline-block', color: 'var(--dark-accent)' }}
         />
       </motion.h2>
 
@@ -64,8 +68,8 @@ export default function Hero() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 1.1 }}
       >
-        <p style={{ maxWidth: '540px', marginTop: '20px', fontSize: '1.1rem' }}>
-          I'm a software engineer specializing in building (and occasionally designing) exceptional digital experiences. Currently, I'm focused on building secure, scalable web applications using Java, Spring Boot, and AWS.
+        <p style={{ maxWidth: '600px', marginTop: '20px', fontSize: '1.1rem', lineHeight: '1.8' }}>
+          I'm a Cloud & DevOps Architect specializing in designing and automating scalable, highly available infrastructure. Currently, I'm focused on multi-cloud environments, CI/CD pipelines, and Kubernetes orchestrations to deliver robust enterprise solutions.
         </p>
       </motion.div>
 

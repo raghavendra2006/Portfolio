@@ -1,5 +1,7 @@
 import { ParallaxProvider } from "react-scroll-parallax";
 import { useEffect } from "react";
+import { motion, useScroll, useSpring } from "framer-motion";
+import CustomCursor from "./components/CustomCursor";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
@@ -12,6 +14,8 @@ import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 
 export default function App() {
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 });
   useEffect(() => {
     // Smooth scroll for anchor links
     const handleClick = (e) => {
@@ -24,12 +28,33 @@ export default function App() {
         }
       }
     };
+    };
     document.addEventListener("click", handleClick);
-    return () => document.removeEventListener("click", handleClick);
+
+    // Spotlight mouse tracking
+    const handleMouseMove = (e) => {
+      document.body.style.setProperty("--mouse-x", `${e.clientX}px`);
+      document.body.style.setProperty("--mouse-y", `${e.clientY}px`);
+    };
+    window.addEventListener("mousemove", handleMouseMove);
+
+    return () => {
+      document.removeEventListener("click", handleClick);
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
   }, []);
 
   return (
     <ParallaxProvider>
+      <CustomCursor />
+      <motion.div
+        style={{
+          position: "fixed", top: 0, left: 0, right: 0, height: "4px",
+          background: "linear-gradient(90deg, var(--dark-accent), var(--dark-accent-hover))",
+          transformOrigin: "0%", scaleX, zIndex: 10000
+        }}
+      />
+      <div className="spotlight-bg" />
       <Navbar />
       <main>
         <Hero />

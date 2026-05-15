@@ -1,25 +1,26 @@
 import { motion } from "framer-motion";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
+import TiltCard from "./TiltCard";
 
 const projects = [
   {
-    title: "Student Management System",
-    description: "Built secure REST APIs with JWT authentication and role-based access control for student CRUD operations. Implemented persistence using Spring Data JPA and integrated AWS S3 for profile photos.",
-    tech: ["Java 17", "Spring Boot", "MySQL", "AWS S3", "Docker"],
+    title: "Cloud-Native Student Management API",
+    description: "Architected a scalable REST API using Spring Boot. Containerized the application with Docker and orchestrated deployments via automated CI/CD pipelines. Integrated AWS S3 for secure, high-availability profile asset storage.",
+    tech: ["Java & Spring Boot", "Docker", "AWS S3", "CI/CD", "MySQL"],
     github: "https://github.com/raghavendra2006/Student-Management.git",
     external: "#"
   },
   {
-    title: "Hybrid Cloud Infrastructure",
-    description: "Provisioned multi-cloud infrastructure with Terraform to automate GCP and AWS (LocalStack) resources. Built a data migration pipeline from S3 to GCS with optimized transfer performance.",
-    tech: ["Terraform", "GCP", "LocalStack", "Python", "Docker"],
+    title: "Automated Hybrid Cloud Infrastructure",
+    description: "Provisioned a multi-cloud infrastructure using Infrastructure as Code (Terraform). Automated resource deployment across GCP and AWS (LocalStack), establishing a high-throughput data migration pipeline between S3 and GCS.",
+    tech: ["Terraform", "GCP", "LocalStack / AWS", "Docker", "Python"],
     github: "https://github.com/raghavendra2006/Hybrid-Cloud-Architecture-with-Terraform-GCP-and-LocalStack.git",
     external: "#"
   },
   {
-    title: "CloudCompare AI",
-    description: "Developed a full-stack multi-cloud service recommendation engine comparing compute, storage, and AI services. Implemented a glassmorphism UI and robust Spring Boot backend.",
-    tech: ["React", "Spring Boot", "Tailwind CSS", "AI Services"],
+    title: "Serverless Cloud Pricing Aggregator (CloudCompare AI)",
+    description: "Developed a full-stack platform comparing multi-cloud services. Implemented a robust backend microservice architecture to process pricing intelligence, deployed with high-availability configurations and performance optimizations.",
+    tech: ["React & Vite", "Spring Boot", "Microservices", "Cloud Intelligence"],
     github: "https://github.com/raghavendra2006/CLOUD-COMPARE-AI",
     external: "#"
   }
@@ -39,7 +40,7 @@ export default function Projects() {
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: '50px', marginTop: '40px' }}>
         {projects.map((project, i) => (
-          <motion.div
+          <TiltCard
             key={i}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -72,13 +73,14 @@ export default function Projects() {
                 <li key={index}>{t}</li>
               ))}
             </ul>
-          </motion.div>
+          </TiltCard>
         ))}
       </div>
       <style>{`
         .project-card:hover {
           transform: translateY(-5px);
-          box-shadow: 0 10px 30px -15px rgba(100,255,218,0.2);
+          border-color: rgba(0, 240, 255, 0.4);
+          box-shadow: 0 10px 30px -15px rgba(0, 240, 255, 0.2);
         }
       `}</style>
     </section>
