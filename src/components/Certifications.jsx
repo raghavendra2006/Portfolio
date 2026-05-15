@@ -5,9 +5,7 @@ const certs = [
   { name: "AWS Developer Associate", icon: <FaAws />, link: "https://drive.google.com/file/d/1wsZBHxZy_Vry1O9odeNXuOchrWr11Hf8/view" },
   { name: "AWS Cloud Developing", icon: <FaAws />, link: "https://drive.google.com/file/d/1wsZBHxZy_Vry1O9odeNXuOchrWr11Hf8/view" },
   { name: "Google Cloud Career Launchpad", icon: <FaGoogle />, link: "https://drive.google.com/file/d/1kB6T16NDJAtj7CQWcCfSch8pTwaUMSdk/view" },
-  { name: "GFG Cloud Practitioner", icon: <FaCertificate />, link: "https://drive.google.com/file/d/1iKPKb30pfJTTeJxHC9Numn-3dOwmDsBC/view" },
-  { name: "AI Intern Completion (Infosys)", icon: <FaCertificate />, link: "https://drive.google.com/file/d/1OSC9Z4b0YEn80vOYMzoO9W4gIAjCqN8i/view" },
-  { name: "AWS Cloud Internship", icon: <FaAws />, link: "https://drive.google.com/file/d/1uIoucOXvtXpXrFVi441Z5WLCoTkgtD7L/view" }
+  { name: "GFG Cloud Practitioner", icon: <FaCertificate />, link: "https://drive.google.com/file/d/1iKPKb30pfJTTeJxHC9Numn-3dOwmDsBC/view" }
 ];
 
 export default function Certifications() {

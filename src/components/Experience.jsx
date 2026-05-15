@@ -1,10 +1,12 @@
 import { motion } from "framer-motion";
+import { FaExternalLinkAlt } from "react-icons/fa";
 
 const experience = [
   {
     role: "AWS Cloud Intern",
     company: "Technical Hub Pvt Ltd",
     period: "May 2025 – June 2025",
+    link: "https://drive.google.com/file/d/1uIoucOXvtXpXrFVi441Z5WLCoTkgtD7L/view",
     description: [
       "Configured VPC networking, subnets, route tables, and security groups to support 10+ EC2 instances with high availability.",
       "Hardened IAM policies using least-privilege access patterns, reducing excessive permissions and improving security posture.",
@@ -15,6 +17,7 @@ const experience = [
     role: "Artificial Intelligence Intern",
     company: "Infosys Springboard",
     period: "Sep 2025 – Nov 2025",
+    link: "https://drive.google.com/file/d/1OSC9Z4b0YEn80vOYMzoO9W4gIAjCqN8i/view",
     description: [
       "Built an AI-driven agricultural assistant and integrated model outputs into backend services for near real-time recommendations.",
       "Improved inference latency by deploying services on AWS and optimizing the request/response workflow."
@@ -52,8 +55,21 @@ export default function Experience() {
               borderRadius: '50%', backgroundColor: 'var(--dark-accent)',
               boxShadow: '0 0 10px var(--dark-accent)'
             }} />
-            <h3 style={{ fontSize: '1.3rem', color: 'var(--dark-text-primary)' }}>
-              {job.role} <span className="text-gradient">@ {job.company}</span>
+            <h3 style={{ fontSize: '1.3rem', color: 'var(--dark-text-primary)', display: 'flex', alignItems: 'center', gap: '15px' }}>
+              <span>{job.role} <span className="text-gradient">@ {job.company}</span></span>
+              {job.link && (
+                <a 
+                  href={job.link} 
+                  target="_blank" 
+                  rel="noreferrer" 
+                  style={{ color: 'var(--dark-accent)', fontSize: '0.9rem', display: 'flex', opacity: 0.7 }}
+                  title="Verify Experience"
+                  onMouseOver={e => e.currentTarget.style.opacity = '1'}
+                  onMouseOut={e => e.currentTarget.style.opacity = '0.7'}
+                >
+                  <FaExternalLinkAlt />
+                </a>
+              )}
             </h3>
             <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.85rem', marginBottom: '15px' }}>
               {job.period}
