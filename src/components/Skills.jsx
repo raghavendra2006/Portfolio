@@ -61,9 +61,16 @@ export default function Skills() {
         Technical Arsenal
       </motion.h2>
 
-      <div style={{
-        display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '30px', marginTop: '40px'
-      }}>
+      <motion.div 
+        initial={{ opacity: 0, y: 50, rotateX: 15 }}
+        whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.8 }}
+        style={{
+          display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '30px', marginTop: '40px',
+          transformStyle: 'preserve-3d'
+        }}
+      >
         {skillCategories.map((cat, index) => (
           <TiltCard
             key={index}

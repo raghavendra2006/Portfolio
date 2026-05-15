@@ -14,11 +14,11 @@ export default function About() {
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: '30px', marginTop: '40px' }}>
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 50, rotateX: 15 }}
+          whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ delay: 0.2 }}
-          style={{ maxWidth: '800px' }}
+          transition={{ duration: 0.8, ease: [0.2, 0.65, 0.3, 0.9] }}
+          style={{ maxWidth: '800px', transformStyle: 'preserve-3d' }}
         >
           <p style={{ marginBottom: '15px' }}>
             Hello! My name is Raghavendra and I enjoy creating things that live on the internet. My interest in software development started back in 2021 when I decided to try editing custom Tumblr themes — turns out hacking together HTML & CSS taught me a lot about HTML & CSS!

@@ -50,7 +50,13 @@ export default function Experience() {
         Professional Narrative
       </motion.h2>
 
-      <div style={{ marginTop: '40px', display: 'flex', flexDirection: 'column', gap: '60px', position: 'relative' }}>
+      <motion.div 
+        initial={{ opacity: 0, y: 50, rotateX: 15 }}
+        whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.8 }}
+        style={{ marginTop: '40px', display: 'flex', flexDirection: 'column', gap: '60px', position: 'relative', transformStyle: 'preserve-3d' }}
+      >
         {/* Animated Timeline Path */}
         <div style={{ 
           position: 'absolute', left: 0, top: 0, bottom: 0, width: '2px', 

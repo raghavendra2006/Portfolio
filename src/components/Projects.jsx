@@ -38,7 +38,13 @@ export default function Projects() {
         Some Things I've Built
       </motion.h2>
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '50px', marginTop: '40px' }}>
+      <motion.div 
+        initial={{ opacity: 0, y: 50, rotateX: 15 }}
+        whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.8 }}
+        style={{ display: 'flex', flexDirection: 'column', gap: '50px', marginTop: '40px', transformStyle: 'preserve-3d' }}
+      >
         {projects.map((project, i) => (
           <TiltCard
             key={i}

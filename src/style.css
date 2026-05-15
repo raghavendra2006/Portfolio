@@ -139,6 +139,7 @@ body.light a { color: var(--light-accent); }
   padding: 100px 20px;
   max-width: 1000px;
   margin: 0 auto;
+  perspective: 1000px; /* Enable 3D space for section content */
 }
 
 /* Glassmorphism Refinement */

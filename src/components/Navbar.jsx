@@ -57,11 +57,14 @@ export default function Navbar() {
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: i * 0.1 }}
+                whileHover={{ scale: 1.1, y: -2 }}
+                whileTap={{ scale: 0.95 }}
               >
                 <a href={item.href} style={{
                   color: dark ? 'var(--dark-text-primary)' : 'var(--light-text-primary)',
                   fontSize: '0.9rem', fontFamily: "'JetBrains Mono', monospace",
-                  transition: 'color 0.2s ease'
+                  transition: 'color 0.2s ease',
+                  padding: '5px 10px'
                 }}
                 onMouseOver={e => e.target.style.color = dark ? 'var(--dark-accent)' : 'var(--light-accent)'}
                 onMouseOut={e => e.target.style.color = dark ? 'var(--dark-text-primary)' : 'var(--light-text-primary)'}
