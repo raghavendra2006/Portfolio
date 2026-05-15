@@ -46,7 +46,7 @@ export default function CustomCursor() {
           width: "8px",
           height: "8px",
           borderRadius: "50%",
-          backgroundColor: "var(--dark-accent)",
+          backgroundColor: "var(--dark-accent-hover)",
           pointerEvents: "none",
           zIndex: 9999,
         }}
