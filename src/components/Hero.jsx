@@ -154,6 +154,32 @@ export default function Hero() {
             </div>
           </TiltCard>
         </motion.div>
+
+        {/* Live System Logs - Apex Detail */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.4 }}
+          transition={{ delay: 2 }}
+          style={{
+            position: 'absolute', bottom: '20px', left: '20px',
+            fontFamily: "'JetBrains Mono', monospace", fontSize: '0.7rem',
+            color: 'var(--dark-accent)', pointerEvents: 'none',
+            maxWidth: '300px', display: 'flex', flexDirection: 'column', gap: '4px'
+          }}
+          className="system-logs"
+        >
+          <TypeAnimation
+            sequence={[
+              '> initializing terraform pulse...', 2000,
+              '> sync: aws_vpc.main established', 2000,
+              '> deploy: k8s_cluster.production', 2000,
+              '> status: all systems operational', 5000,
+            ]}
+            wrapper="span"
+            cursor={true}
+            repeat={Infinity}
+          />
+        </motion.div>
       </div>
 
       <style>{`
@@ -162,6 +188,9 @@ export default function Hero() {
           .hero-image-container { width: 100%; order: -1; }
           .hero-container div { align-items: center; }
           p { margin-left: auto; margin-right: auto; }
+        }
+        @media (max-width: 768px) {
+          .system-logs { display: none !important; }
         }
       `}</style>
     </section>

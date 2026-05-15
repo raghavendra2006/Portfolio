@@ -44,7 +44,8 @@ export default function Navbar() {
           initial={{ opacity: 0, x: -20 }} 
           animate={{ opacity: 1, x: 0 }} 
           transition={{ duration: 0.5 }}
-          style={{ fontSize: '1.5rem', fontWeight: 700, color: dark ? 'var(--dark-accent)' : 'var(--light-accent)' }}
+          className="glitch-hover"
+          style={{ fontSize: '1.8rem', fontWeight: 900, color: 'var(--dark-accent)', cursor: 'pointer' }}
         >
           R.
         </motion.div>

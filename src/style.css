@@ -81,6 +81,21 @@ body::after {
   50% { opacity: 0.8; filter: blur(4px); }
 }
 
+@keyframes glitch {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+  100% { transform: translate(0); }
+}
+
+.glitch-hover:hover {
+  animation: glitch 0.3s cubic-bezier(.25,.46,.45,.94) both infinite;
+  color: #fff !important;
+  text-shadow: 0 0 10px var(--dark-accent);
+}
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 10px;
