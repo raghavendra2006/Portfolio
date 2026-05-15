@@ -1,6 +1,7 @@
 import { ParallaxProvider } from "react-scroll-parallax";
-import { useEffect } from "react";
-import { motion, useScroll, useSpring } from "framer-motion";
+import { useEffect, useState } from "react";
+import { motion, useScroll, useSpring, AnimatePresence } from "framer-motion";
+import { TypeAnimation } from "react-type-animation";
 import CustomCursor from "./components/CustomCursor";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
@@ -14,8 +15,16 @@ import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 
 export default function App() {
+  const [loading, setLoading] = useState(true);
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 });
+
+  useEffect(() => {
+    // Simulate system boot
+    const timer = setTimeout(() => setLoading(false), 2500);
+    return () => clearTimeout(timer);
+  }, []);
+
   useEffect(() => {
     // Smooth scroll for anchor links
     const handleClick = (e) => {
@@ -59,6 +68,46 @@ export default function App() {
 
   return (
     <ParallaxProvider>
+      <AnimatePresence>
+        {loading ? (
+          <motion.div
+            key="preloader"
+            initial={{ opacity: 1 }}
+            exit={{ opacity: 0, scale: 1.1, filter: "blur(20px)" }}
+            transition={{ duration: 0.8, ease: "circOut" }}
+            style={{
+              position: 'fixed', inset: 0, zIndex: 99999,
+              backgroundColor: '#000', display: 'flex', flexDirection: 'column',
+              justifyContent: 'center', alignItems: 'center', gap: '20px'
+            }}
+          >
+            <div style={{ 
+              width: '200px', height: '2px', backgroundColor: 'rgba(0, 240, 255, 0.1)',
+              borderRadius: '2px', overflow: 'hidden', position: 'relative'
+            }}>
+              <motion.div 
+                initial={{ width: 0 }}
+                animate={{ width: '100%' }}
+                transition={{ duration: 2, ease: "easeInOut" }}
+                style={{ height: '100%', backgroundColor: 'var(--dark-accent)', boxShadow: '0 0 15px var(--dark-accent)' }}
+              />
+            </div>
+            <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.8rem', color: 'var(--dark-accent)' }}>
+              <TypeAnimation
+                sequence={[
+                  'AUTHENTICATING ARCHITECT...', 500,
+                  'INITIALIZING CLOUD TERMINAL...', 500,
+                  'SYNCING INFRASTRUCTURE...', 500,
+                  'ACCESS GRANTED.', 500
+                ]}
+                wrapper="span"
+                cursor={false}
+              />
+            </div>
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
+
       <CustomCursor />
       <motion.div
         style={{
