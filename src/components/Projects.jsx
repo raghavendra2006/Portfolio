@@ -65,14 +65,22 @@ export default function Projects() {
             </div>
             <h3 style={{ color: 'var(--dark-text-primary)', fontSize: '1.5rem' }}>{project.title}</h3>
             <p style={{ color: 'var(--dark-text-secondary)' }}>{project.description}</p>
-            <ul style={{ 
-              display: 'flex', flexWrap: 'wrap', gap: '15px', listStyle: 'none', padding: 0,
-              fontFamily: "'JetBrains Mono', monospace", fontSize: '0.85rem', color: 'var(--dark-text-primary)'
-            }}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginTop: '10px' }}>
               {project.tech.map((t, index) => (
-                <li key={index}>{t}</li>
+                <span key={index} style={{ 
+                  fontSize: '0.7rem', 
+                  fontFamily: "'JetBrains Mono', monospace",
+                  padding: '4px 10px',
+                  borderRadius: '4px',
+                  backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                  border: '1px solid rgba(59, 130, 246, 0.2)',
+                  color: 'var(--dark-accent)',
+                  fontWeight: 600
+                }}>
+                  {t}
+                </span>
               ))}
-            </ul>
+            </div>
           </TiltCard>
         ))}
       </div>

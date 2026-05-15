@@ -57,20 +57,22 @@ body {
   position: relative;
 }
 
-/* Technical Grid */
+/* Technical Grid with Parallax */
 body::after {
   content: "";
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 200%; /* Extended for parallax */
   background-image: 
-    linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(59, 130, 246, 0.03) 1px, transparent 1px);
-  background-size: 40px 40px;
+    linear-gradient(rgba(59, 130, 246, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59, 130, 246, 0.04) 1px, transparent 1px);
+  background-size: 50px 50px;
   pointer-events: none;
   z-index: -1;
+  transform: translateY(var(--scroll-y, 0));
+  transition: transform 0.1s linear;
 }
 
 /* Custom Scrollbar */
@@ -148,7 +150,31 @@ body.light a { color: var(--light-accent); }
   box-shadow: 0 8px 32px 0 var(--dark-shadow);
   border-radius: 16px;
   transition: border-color var(--transition-normal), box-shadow var(--transition-normal);
+  overflow: hidden;
+  position: relative;
 }
+
+/* Holographic Reflection */
+.glass::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.03) 45%,
+    rgba(255, 255, 255, 0.08) 50%,
+    rgba(255, 255, 255, 0.03) 55%,
+    transparent 100%
+  );
+  transform: translate(var(--mouse-x-pct, 0%), var(--mouse-y-pct, 0%));
+  pointer-events: none;
+  z-index: 1;
+}
+
 .glass:hover {
   border-color: rgba(59, 130, 246, 0.4);
   background: rgba(15, 23, 42, 0.6);

@@ -30,16 +30,30 @@ export default function App() {
     };
     document.addEventListener("click", handleClick);
 
-    // Spotlight mouse tracking
+    // Advanced tracking for spotlight, parallax and holography
     const handleMouseMove = (e) => {
-      document.body.style.setProperty("--mouse-x", `${e.clientX}px`);
-      document.body.style.setProperty("--mouse-y", `${e.clientY}px`);
+      const { clientX, clientY } = e;
+      const xPct = (clientX / window.innerWidth - 0.5) * 20;
+      const yPct = (clientY / window.innerHeight - 0.5) * 20;
+      
+      document.documentElement.style.setProperty("--mouse-x", `${clientX}px`);
+      document.documentElement.style.setProperty("--mouse-y", `${clientY}px`);
+      document.documentElement.style.setProperty("--mouse-x-pct", `${xPct}%`);
+      document.documentElement.style.setProperty("--mouse-y-pct", `${yPct}%`);
     };
+
+    const handleScroll = () => {
+      const scrolled = window.scrollY;
+      document.documentElement.style.setProperty("--scroll-y", `${-scrolled * 0.1}px`);
+    };
+
     window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("scroll", handleScroll);
 
     return () => {
       document.removeEventListener("click", handleClick);
       window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 

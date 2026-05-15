@@ -6,22 +6,46 @@ const skillCategories = [
   {
     title: "Cloud Infrastructure",
     icon: <FaCloud size={30} />,
-    skills: ["AWS (EC2, S3, EKS, IAM)", "GCP / Azure", "Terraform", "CloudFormation", "Serverless"]
+    skills: [
+      { name: "AWS Services", level: "L5" },
+      { name: "GCP / Azure", level: "L4" },
+      { name: "Terraform", level: "L5" },
+      { name: "CloudFormation", level: "L4" },
+      { name: "Serverless", level: "L4" }
+    ]
   },
   {
     title: "DevOps & CI/CD",
     icon: <FaDocker size={30} />,
-    skills: ["Docker & Kubernetes", "Jenkins pipelines", "GitHub Actions", "Ansible", "ArgoCD"]
+    skills: [
+      { name: "Docker & Kubernetes", level: "L5" },
+      { name: "Jenkins pipelines", level: "L4" },
+      { name: "GitHub Actions", level: "L4" },
+      { name: "Ansible", level: "L3" },
+      { name: "ArgoCD", level: "L3" }
+    ]
   },
   {
     title: "Backend & Architecture",
     icon: <FaServer size={30} />,
-    skills: ["Java & Spring Boot", "Python / Go", "Microservices", "RESTful APIs", "gRPC / GraphQL"]
+    skills: [
+      { name: "Java & Spring Boot", level: "L5" },
+      { name: "Python / Go", level: "L4" },
+      { name: "Microservices", level: "L5" },
+      { name: "RESTful APIs", level: "L5" },
+      { name: "gRPC / GraphQL", level: "L3" }
+    ]
   },
   {
     title: "Monitoring & Security",
     icon: <FaShieldAlt size={30} />,
-    skills: ["Prometheus & Grafana", "ELK Stack", "Datadog", "SonarQube", "IAM & RBAC"]
+    skills: [
+      { name: "Prometheus & Grafana", level: "L4" },
+      { name: "ELK Stack", level: "L4" },
+      { name: "Datadog", level: "L3" },
+      { name: "SonarQube", level: "L4" },
+      { name: "IAM & RBAC", level: "L5" }
+    ]
   }
 ];
 
@@ -54,8 +78,11 @@ export default function Skills() {
             <h3 style={{ color: 'var(--dark-text-primary)', fontSize: '1.2rem' }}>{cat.title}</h3>
             <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '10px' }}>
               {cat.skills.map((skill, i) => (
-                <li key={i} style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.9rem', color: 'var(--dark-text-secondary)', display: 'flex', alignItems: 'center', gap: '10px' }}>
-                  <span style={{ color: 'var(--dark-accent)' }}>▹</span> {skill}
+                <li key={i} style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.85rem', color: 'var(--dark-text-secondary)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <span style={{ color: 'var(--dark-accent)' }}>▹</span> {skill.name}
+                  </div>
+                  <span style={{ fontSize: '0.7rem', color: 'var(--dark-accent)', opacity: 0.6 }}>[{skill.level}]</span>
                 </li>
               ))}
             </ul>
