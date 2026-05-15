@@ -121,7 +121,7 @@ export default function Experience() {
             </ul>
           </motion.div>
         ))}
-      </div>
+      </motion.div>
     </section>
   );
 }

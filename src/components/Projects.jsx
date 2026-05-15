@@ -89,7 +89,7 @@ export default function Projects() {
             </div>
           </TiltCard>
         ))}
-      </div>
+      </motion.div>
       <style>{`
         .project-card:hover {
           transform: translateY(-5px);

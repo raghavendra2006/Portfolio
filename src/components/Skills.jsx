@@ -95,7 +95,7 @@ export default function Skills() {
             </ul>
           </TiltCard>
         ))}
-      </div>
+      </motion.div>
     </section>
   );
 }
