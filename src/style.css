@@ -16,18 +16,18 @@
   --font-size-h2: clamp(1.8rem, 5vw, 3.2rem);
   --font-size-body: clamp(1rem, 1.2vw, 1.15rem);
   
-  /* Dark Mode Colors (Elite Architecture) */
-  --dark-bg: #020617;
-  --dark-bg-secondary: #131127;
-  --dark-text-primary: #f8fafc;
-  --dark-text-secondary: #94a3b8;
-  --dark-card-bg: rgba(15, 23, 42, 0.7);
-  --dark-accent: #3b82f6;
-  --dark-accent-hover: #10b981;
-  --dark-border: rgba(59, 130, 246, 0.1);
-  --dark-shadow: rgba(0, 0, 0, 0.8);
-  --glass-bg: rgba(15, 23, 42, 0.4);
-  --glass-border: rgba(59, 130, 246, 0.2);
+  /* Dark Mode Colors (OLED Black Elite) */
+  --dark-bg: #000000;
+  --dark-bg-secondary: #050505;
+  --dark-text-primary: #ffffff;
+  --dark-text-secondary: #a1a1aa;
+  --dark-card-bg: rgba(10, 10, 10, 0.7);
+  --dark-accent: #00f0ff; /* Neon Cyan */
+  --dark-accent-hover: #10b981; /* Emerald */
+  --dark-border: rgba(0, 240, 255, 0.1);
+  --dark-shadow: rgba(0, 0, 0, 0.9);
+  --glass-bg: rgba(5, 5, 5, 0.5);
+  --glass-border: rgba(0, 240, 255, 0.2);
   --neon-pulse: rgba(59, 130, 246, 0.5);
   
   /* Transitions */
@@ -199,7 +199,7 @@ body.light a { color: var(--light-accent); }
   z-index: 2;
 }
 
-/* Ambient Blobs */
+/* Ambient Blobs (OLED Glow) */
 .blob {
   position: fixed;
   width: 500px;
@@ -207,7 +207,7 @@ body.light a { color: var(--light-accent); }
   border-radius: 50%;
   filter: blur(100px);
   z-index: -2;
-  opacity: 0.12;
+  opacity: 0.1;
   pointer-events: none;
   animation: blob-float 20s infinite alternate;
 }
@@ -215,13 +215,13 @@ body.light a { color: var(--light-accent); }
 .blob-1 {
   top: -100px;
   left: -100px;
-  background: var(--dark-accent);
+  background: radial-gradient(circle, var(--dark-accent) 0%, transparent 70%);
 }
 
 .blob-2 {
   bottom: -100px;
   right: -100px;
-  background: var(--dark-accent-hover);
+  background: radial-gradient(circle, var(--dark-accent-hover) 0%, transparent 70%);
   animation-delay: -5s;
 }
 
@@ -281,7 +281,7 @@ body.light a { color: var(--light-accent); }
   z-index: -1;
   background: radial-gradient(
     600px circle at var(--mouse-x, 50vw) var(--mouse-y, 50vh),
-    rgba(59, 130, 246, 0.15),
+    rgba(0, 240, 255, 0.08),
     transparent 50%
   );
 }
