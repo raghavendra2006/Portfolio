@@ -1,6 +1,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
-import profileImg from "../assets/profile.png";
+import profileImg from "../assets/profile-new.jpg";
 import TiltCard from "./TiltCard";
 
 const wordVariants = {
