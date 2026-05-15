@@ -54,6 +54,8 @@ export default function App() {
         }}
       />
       <div className="spotlight-bg" />
+      <div className="blob blob-1" />
+      <div className="blob blob-2" />
       <Navbar />
       <main>
         <Hero />

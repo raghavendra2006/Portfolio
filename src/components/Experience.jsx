@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useSpring, useTransform } from "framer-motion";
+import { useRef } from "react";
 import { FaExternalLinkAlt } from "react-icons/fa";
 
 const experience = [
@@ -26,57 +27,87 @@ const experience = [
 ];
 
 export default function Experience() {
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start center", "end center"]
+  });
+
+  const scaleY = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
+
   return (
-    <section id="experience" className="section" style={{ paddingTop: '100px' }}>
+    <section id="experience" className="section" ref={containerRef} style={{ paddingTop: '100px', position: 'relative' }}>
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
       >
         <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 'clamp(1rem, 3vw, 1.5rem)', color: 'var(--dark-accent)', marginRight: '10px' }}>04.</span>
-        Where I've Worked
+        Professional Narrative
       </motion.h2>
 
-      <div style={{ marginTop: '40px', display: 'flex', flexDirection: 'column', gap: '40px' }}>
+      <div style={{ marginTop: '40px', display: 'flex', flexDirection: 'column', gap: '60px', position: 'relative' }}>
+        {/* Animated Timeline Path */}
+        <div style={{ 
+          position: 'absolute', left: 0, top: 0, bottom: 0, width: '2px', 
+          backgroundColor: 'rgba(59, 130, 246, 0.1)' 
+        }} />
+        <motion.div style={{ 
+          position: 'absolute', left: 0, top: 0, bottom: 0, width: '2px', 
+          backgroundColor: 'var(--dark-accent)',
+          boxShadow: '0 0 15px var(--dark-accent)',
+          scaleY, transformOrigin: 'top'
+        }} />
+
         {experience.map((job, i) => (
           <motion.div
             key={i}
-            initial={{ opacity: 0, x: -20 }}
+            initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ delay: 0.1 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, delay: i * 0.2 }}
             style={{ 
-              borderLeft: '2px solid var(--dark-accent)', paddingLeft: '20px',
+              paddingLeft: '40px',
               position: 'relative'
             }}
           >
-            <div style={{ 
-              position: 'absolute', left: '-6px', top: 0, width: '10px', height: '10px',
-              borderRadius: '50%', backgroundColor: 'var(--dark-accent)',
-              boxShadow: '0 0 10px var(--dark-accent)'
-            }} />
-            <h3 style={{ fontSize: '1.3rem', color: 'var(--dark-text-primary)', display: 'flex', alignItems: 'center', gap: '15px' }}>
-              <span>{job.role} <span className="text-gradient">@ {job.company}</span></span>
+            <motion.div 
+              initial={{ scale: 0 }}
+              whileInView={{ scale: 1 }}
+              viewport={{ once: true }}
+              style={{ 
+                position: 'absolute', left: '-4px', top: '8px', width: '10px', height: '10px',
+                borderRadius: '50%', backgroundColor: 'var(--dark-bg)',
+                border: '2px solid var(--dark-accent)',
+                boxShadow: '0 0 10px var(--dark-accent)',
+                zIndex: 2
+              }} 
+            />
+            <h3 style={{ fontSize: '1.4rem', color: 'var(--dark-text-primary)', display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '10px' }}>
+              <span>{job.role}</span> 
+              <span className="text-gradient" style={{ fontSize: '1.2rem' }}>@ {job.company}</span>
               {job.link && (
                 <a 
                   href={job.link} 
                   target="_blank" 
                   rel="noreferrer" 
-                  style={{ color: 'var(--dark-accent)', fontSize: '0.9rem', display: 'flex', opacity: 0.7 }}
+                  style={{ color: 'var(--dark-accent)', fontSize: '0.9rem', display: 'flex', opacity: 0.6 }}
                   title="Verify Experience"
-                  onMouseOver={e => e.currentTarget.style.opacity = '1'}
-                  onMouseOut={e => e.currentTarget.style.opacity = '0.7'}
                 >
                   <FaExternalLinkAlt />
                 </a>
               )}
             </h3>
-            <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.85rem', marginBottom: '15px' }}>
+            <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.9rem', color: 'var(--dark-accent)', marginBottom: '15px', fontWeight: 600 }}>
               {job.period}
             </p>
-            <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '10px' }}>
+            <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '12px' }}>
               {job.description.map((desc, idx) => (
-                <li key={idx} style={{ position: 'relative', paddingLeft: '20px', color: 'var(--dark-text-secondary)' }}>
+                <li key={idx} style={{ position: 'relative', paddingLeft: '25px', color: 'var(--dark-text-secondary)', fontSize: '1rem' }}>
                   <span style={{ position: 'absolute', left: 0, color: 'var(--dark-accent)' }}>▹</span>
                   {desc}
                 </li>

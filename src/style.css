@@ -11,7 +11,12 @@
   --light-shadow: rgba(0, 0, 0, 0.1);
   --light-card-bg: rgba(255, 255, 255, 0.7);
   
-  /* Dark Mode Colors (Holographic Space Theme) */
+  /* Fluid Typography */
+  --font-size-h1: clamp(2.5rem, 8vw, 5rem);
+  --font-size-h2: clamp(1.8rem, 5vw, 3.2rem);
+  --font-size-body: clamp(1rem, 1.2vw, 1.15rem);
+  
+  /* Dark Mode Colors (Elite Architecture) */
   --dark-bg: #020617;
   --dark-bg-secondary: #131127;
   --dark-text-primary: #f8fafc;
@@ -49,6 +54,23 @@ body {
   background-color: var(--dark-bg);
   color: var(--dark-text-primary);
   overflow-x: hidden;
+  position: relative;
+}
+
+/* Technical Grid */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59, 130, 246, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: -1;
 }
 
 /* Custom Scrollbar */
@@ -77,11 +99,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h2 {
-  font-size: clamp(2rem, 5vw, 3rem);
-  margin-bottom: 2rem;
+  font-size: var(--font-size-h2);
+  margin-bottom: 2.5rem;
   position: relative;
   display: inline-block;
   color: var(--dark-text-primary);
+  letter-spacing: -0.02em;
 }
 body.light h2 { color: var(--light-text-primary); }
 
@@ -116,9 +139,9 @@ body.light a { color: var(--light-accent); }
   margin: 0 auto;
 }
 
-/* ===== Glassmorphism utilities ===== */
+/* Glassmorphism Refinement */
 .glass {
-  background: var(--dark-card-bg);
+  background: var(--glass-bg);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--glass-border);
@@ -127,8 +150,72 @@ body.light a { color: var(--light-accent); }
   transition: border-color var(--transition-normal), box-shadow var(--transition-normal);
 }
 .glass:hover {
-  border-color: rgba(217, 70, 239, 0.4);
-  box-shadow: 0 8px 32px 0 rgba(139, 92, 246, 0.2);
+  border-color: rgba(59, 130, 246, 0.4);
+  background: rgba(15, 23, 42, 0.6);
+  box-shadow: 0 12px 40px 0 rgba(59, 130, 246, 0.15);
+}
+
+/* Ambient Blobs */
+.blob {
+  position: fixed;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  filter: blur(100px);
+  z-index: -2;
+  opacity: 0.12;
+  pointer-events: none;
+  animation: blob-float 20s infinite alternate;
+}
+
+.blob-1 {
+  top: -100px;
+  left: -100px;
+  background: var(--dark-accent);
+}
+
+.blob-2 {
+  bottom: -100px;
+  right: -100px;
+  background: var(--dark-accent-hover);
+  animation-delay: -5s;
+}
+
+@keyframes blob-float {
+  from { transform: translate(0, 0) scale(1); }
+  to { transform: translate(50px, 50px) scale(1.1); }
+}
+
+.profile-img-container {
+  position: relative;
+  width: 320px;
+  height: 320px;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid var(--glass-border);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: grayscale(100%) brightness(0.9);
+}
+
+.profile-img-container:hover {
+  filter: grayscale(0%) brightness(1.1);
+  border-color: var(--dark-accent);
+  box-shadow: 0 0 30px rgba(59, 130, 246, 0.4);
+}
+
+.profile-img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-img-frame {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  border: 2px solid var(--dark-accent);
+  border-radius: 24px;
+  opacity: 0.2;
+  pointer-events: none;
 }
 
 /* Gradient Text Utility */
@@ -164,10 +251,19 @@ body::before {
   width: 100%;
   height: 100%;
   background: url("https://grainy-gradients.vercel.app/noise.svg");
-  opacity: 0.04;
+  opacity: 0.03; /* Refined for elite depth */
   pointer-events: none;
   z-index: 9999;
-  filter: contrast(150%) brightness(150%);
+  filter: contrast(170%) brightness(120%);
+}
+
+/* Magnetic Hover Interaction */
+.magnetic {
+  transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.magnetic:hover {
+  transform: scale(1.05) translate(var(--x, 0), var(--y, 0));
 }
 body.light .glass {
   background: var(--light-card-bg);
