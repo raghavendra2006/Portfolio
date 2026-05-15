@@ -61,13 +61,9 @@ export default function Projects() {
               position: 'relative', overflow: 'hidden'
             }}
           >
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-              <div style={{ flex: 1 }}>
-                <div style={{ color: 'var(--dark-accent)', fontFamily: "'JetBrains Mono', monospace", fontSize: '0.8rem', marginBottom: '5px' }}>// IMPACT METRIC</div>
-                <div style={{ fontSize: '1.8rem', fontWeight: 800, color: 'var(--dark-text-primary)' }}>{project.metrics.value}</div>
-                <div style={{ fontSize: '0.7rem', color: 'var(--dark-text-secondary)', textTransform: 'uppercase' }}>{project.metrics.label}</div>
-              </div>
-              <div style={{ display: 'flex', gap: '15px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '10px' }}>
+              <h3 style={{ color: 'var(--dark-accent)', fontSize: '1.6rem', fontWeight: 800 }}>{project.title}</h3>
+              <div style={{ display: 'flex', gap: '15px', marginTop: '5px' }}>
                 <a href={project.github} target="_blank" rel="noreferrer" style={{ color: 'var(--dark-text-primary)', fontSize: '1.2rem' }}>
                   <FaGithub />
                 </a>
@@ -76,8 +72,19 @@ export default function Projects() {
                 </a>
               </div>
             </div>
-            <h3 style={{ color: 'var(--dark-text-primary)', fontSize: '1.4rem', marginTop: '10px' }}>{project.title}</h3>
-            <p style={{ color: 'var(--dark-text-secondary)', fontSize: '1rem' }}>{project.description}</p>
+
+            <div style={{ display: 'flex', gap: '30px', alignItems: 'center', marginBottom: '15px' }}>
+              <div>
+                <div style={{ color: 'var(--dark-accent)', fontFamily: "'JetBrains Mono', monospace", fontSize: '0.75rem', opacity: 0.8 }}>// IMPACT</div>
+                <div style={{ fontSize: '1.4rem', fontWeight: 800, color: 'var(--dark-text-primary)' }}>{project.metrics.value}</div>
+              </div>
+              <div style={{ width: '1px', height: '30px', backgroundColor: 'var(--dark-border)' }} />
+              <div>
+                <div style={{ color: 'var(--dark-text-secondary)', fontSize: '0.75rem', textTransform: 'uppercase' }}>{project.metrics.label}</div>
+              </div>
+            </div>
+
+            <p style={{ color: 'var(--dark-text-secondary)', fontSize: '1rem', lineHeight: '1.6' }}>{project.description}</p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginTop: '10px' }}>
               {project.tech.map((t, index) => (
                 <span key={index} style={{ 
