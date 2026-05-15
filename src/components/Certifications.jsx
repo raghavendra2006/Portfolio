@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
-import { FaAws, FaGoogle, FaCertificate } from "react-icons/fa";
+import { FaAws, FaGoogle, FaCertificate, FaExternalLinkAlt } from "react-icons/fa";
 
 const certs = [
-  { name: "AWS Developer Associate", icon: <FaAws /> },
-  { name: "AWS Cloud Developing", icon: <FaAws /> },
-  { name: "Google Cloud Career Launchpad", icon: <FaGoogle /> },
-  { name: "GFG Cloud Practitioner", icon: <FaCertificate /> }
+  { name: "AWS Developer Associate", icon: <FaAws />, link: "#" },
+  { name: "AWS Cloud Developing", icon: <FaAws />, link: "#" },
+  { name: "Google Cloud Career Launchpad", icon: <FaGoogle />, link: "#" },
+  { name: "GFG Cloud Practitioner", icon: <FaCertificate />, link: "#" }
 ];
 
 export default function Certifications() {
@@ -28,14 +28,41 @@ export default function Certifications() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ delay: i * 0.1 }}
-            whileHover={{ scale: 1.05, borderColor: "rgba(0, 240, 255, 0.4)" }}
+            whileHover={{ scale: 1.05, borderColor: "rgba(139, 92, 246, 0.4)" }}
             className="glass"
-            style={{ padding: '20px 30px', display: 'flex', alignItems: 'center', gap: '15px', flex: '1 1 250px' }}
+            style={{ 
+              padding: '25px 30px', 
+              display: 'flex', 
+              alignItems: 'center', 
+              gap: '20px', 
+              flex: '1 1 280px',
+              justifyContent: 'space-between'
+            }}
           >
-            <div style={{ color: 'var(--dark-accent)', fontSize: '1.8rem', display: 'flex' }}>
-              {cert.icon}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+              <div style={{ color: 'var(--dark-accent)', fontSize: '2rem', display: 'flex' }}>
+                {cert.icon}
+              </div>
+              <span style={{ color: 'var(--dark-text-primary)', fontWeight: '600', fontSize: '1rem' }}>{cert.name}</span>
             </div>
-            <span style={{ color: 'var(--dark-text-primary)', fontWeight: '600' }}>{cert.name}</span>
+            
+            <a 
+              href={cert.link} 
+              target="_blank" 
+              rel="noreferrer" 
+              style={{ 
+                color: 'var(--dark-accent)', 
+                fontSize: '1.1rem',
+                display: 'flex',
+                alignItems: 'center',
+                transition: 'transform 0.3s ease'
+              }}
+              onMouseOver={e => e.currentTarget.style.transform = 'scale(1.2)'}
+              onMouseOut={e => e.currentTarget.style.transform = 'scale(1)'}
+              title="Verify Certificate"
+            >
+              <FaExternalLinkAlt />
+            </a>
           </motion.div>
         ))}
       </div>
